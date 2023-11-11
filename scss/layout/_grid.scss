@@ -1,0 +1,56 @@
+@use '../util/' as u;
+
+.grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: u.rem(40);
+        // max-width: 1024;
+        margin-inline: auto;
+        width: min(100% - u.rem(40), u.rem(1000));// alternative use
+        font-size: u.rem(16);
+
+        @include u.breakpoint(large) {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: auto;
+        }
+
+        &__main, &__sidebar {
+                padding: u.rem(40);
+                @media (max-width: u.em(56.25)){
+                }
+        }
+
+        &__main {
+                background-color: #020270;
+                //Change as the Screen is bigger
+                @include u.breakpoint(medium){
+                        background-color: chocolate;
+                }
+                @include u.breakpoint(large){
+                        background-color: darkseagreen;
+                        color: #020220;
+                }
+                
+        }
+
+        &__sidebar {
+                @include u.breakpoint-down(medium){
+                        text-align: center;
+                } //Ubove is another option
+                @include u.breakpoint(small){
+                        text-align: right;
+                }
+        }
+
+        &__widget {
+                background-color: #ebb113;
+                padding: u.rem(16);
+
+                &--green {
+                        @extend .grid__widget;
+                        background-color: forestgreen;
+                }
+        }
+}
+

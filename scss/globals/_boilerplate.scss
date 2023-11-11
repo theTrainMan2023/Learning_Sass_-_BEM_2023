@@ -1,0 +1,20 @@
+@use '../util' as u; //this can be a var or any name like ...util as * for instance and then used below to link to the scss where it is stored.
+
+html {
+    box-sizing: border-box;
+    font-size: 100% //Workaround to convert to rem is - 62.25% size = 10 default browser sixe [ 16 / 62.25% = 10];
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+ 
+body{
+    font-family: u.$font-4; //@use linked util....
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+
